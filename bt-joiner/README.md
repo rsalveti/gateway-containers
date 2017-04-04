@@ -9,7 +9,7 @@ docker build -t bt-joiner --force-rm .
 ## Run the container
 
 ```
-docker run --restart=always -d -t --privileged --net=host --name bt-joiner bt-joiner
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner bt-joiner
 ```
 
 ## Run the pre-built container
@@ -17,11 +17,11 @@ docker run --restart=always -d -t --privileged --net=host --name bt-joiner bt-jo
 ARM64:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --name bt-joiner rsalveti/bt-joiner-arm64
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --name bt-joiner rsalveti/bt-joiner-armhf
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner-armhf
 ```
