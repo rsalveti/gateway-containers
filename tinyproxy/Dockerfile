@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y \
     tinyproxy \
  && rm -rf /var/lib/apt/lists/*
 
-# Tinyproxy config file
-COPY tinyproxy.conf /etc/tinyproxy.conf
+# Tinyproxy config file (use Debian location currently)
+COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
 
 EXPOSE 8080
 
