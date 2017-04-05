@@ -9,7 +9,7 @@ docker build -t tinyproxy --force-rm .
 ## Run the container
 
 ```
-docker run -it --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy tinyproxy
+docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy tinyproxy
 ```
 
 ## Run the pre-built container
