@@ -1,4 +1,4 @@
-FROM bitnami/minideb:unstable
+FROM rsalveti/minideb:stretch-armhf
 
 # Share step with the bt-joiner container
 RUN install_packages bluez wget

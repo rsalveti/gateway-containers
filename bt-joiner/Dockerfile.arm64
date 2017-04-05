@@ -1,4 +1,4 @@
-FROM bitnami/minideb:unstable
+FROM rsalveti/minideb:stretch-arm64
 
 RUN install_packages bluez wget
 

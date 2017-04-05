@@ -3,7 +3,7 @@
 ## Build the container
 
 ```
-docker build -t ibm-bluemix-mosquitto --force-rm .
+docker build -t ibm-bluemix-mosquitto --force-rm -f Dockerfile<.arm64/.armhf> .
 ```
 
 ## Run the container
@@ -25,6 +25,12 @@ docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix
 ```
 
 ## Run the pre-built container
+
+AMD64:
+
+```
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto
+```
 
 ARM64:
 
