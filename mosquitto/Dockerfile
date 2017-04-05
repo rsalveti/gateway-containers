@@ -1,8 +1,12 @@
 FROM vicamo/debian:stretch-arm64
 
+# Share step with the bt-joiner container
 RUN apt-get update && apt-get install -y \
     bluez \
     wget \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y \
     mosquitto \
     jq \
     curl \
