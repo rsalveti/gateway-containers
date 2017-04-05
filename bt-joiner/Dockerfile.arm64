@@ -1,4 +1,4 @@
-FROM rsalveti/minideb:stretch-arm64
+FROM linarotechnologies/minideb:stretch-arm64
 
 RUN install_packages bluez wget
 

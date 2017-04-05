@@ -1,4 +1,4 @@
-FROM rsalveti/minideb:stretch-armhf
+FROM linarotechnologies/minideb:stretch-armhf
 
 RUN install_packages tinyproxy
 
