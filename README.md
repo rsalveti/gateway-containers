@@ -13,7 +13,7 @@ docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=7
 ### Tinyproxy (IPv6 -> IPv4)
 
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:2804:14d:badb:80db:230:18ff:fea6:de04  --name tinyproxy rsalveti/tinyproxy-arm64
+docker run --restart=always -d -t --net=host --add-host=gitci.com:2804:192.168.1.10 --name tinyproxy rsalveti/tinyproxy-arm64
 ```
 
 ### IBM Bluemix Mosquitto
