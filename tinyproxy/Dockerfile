@@ -1,8 +1,6 @@
-FROM vicamo/debian:stretch-arm64
+FROM rsalveti/minideb:stretch-arm64
 
-RUN apt-get update && apt-get install -y \
-    tinyproxy \
- && rm -rf /var/lib/apt/lists/*
+RUN install_packages tinyproxy
 
 # Tinyproxy config file (use Debian location currently)
 COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf

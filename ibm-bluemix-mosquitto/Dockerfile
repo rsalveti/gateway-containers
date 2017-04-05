@@ -1,16 +1,9 @@
-FROM vicamo/debian:stretch-arm64
+FROM rsalveti/minideb:stretch-arm64
 
 # Share step with the bt-joiner container
-RUN apt-get update && apt-get install -y \
-    bluez \
-    wget \
- && rm -rf /var/lib/apt/lists/*
+RUN install_packages bluez wget
 
-RUN apt-get update && apt-get install -y \
-    mosquitto \
-    jq \
-    curl \
- && rm -rf /var/lib/apt/lists/*
+RUN install_packages mosquitto jq curl
 
 # Fix initial start failure so we can run the setup script
 RUN touch /var/log/mosquitto/mosquitto.log
@@ -23,7 +16,7 @@ EXPOSE 1883 8883
 COPY etc-mosquitto-template.conf /etc/mosquitto/template.conf
 
 # Download the Bluemix setup script
-RUN wget https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/mosquitto-conf.sh -O /usr/bin/mosquitto-conf
+RUN wget --no-check-certificate https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/mosquitto-conf.sh -O /usr/bin/mosquitto-conf
 RUN chmod +x /usr/bin/mosquitto-conf
 
 COPY start.sh start.sh

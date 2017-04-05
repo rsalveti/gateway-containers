@@ -1,14 +1,11 @@
-FROM vicamo/debian:stretch-arm64
+FROM rsalveti/minideb:stretch-arm64
 
-RUN apt-get update && apt-get install -y \
-    bluez \
-    wget \
- && rm -rf /var/lib/apt/lists/*
+RUN install_packages bluez wget
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/
 VOLUME /etc/bluetooth/6lowpand
-RUN wget https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/bluetooth_6lowpand.sh -O /usr/bin/bluetooth_6lowpand
+RUN wget --no-check-certificate https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/bluetooth_6lowpand.sh -O /usr/bin/bluetooth_6lowpand
 RUN chmod +x /usr/bin/bluetooth_6lowpand
 
 COPY start.sh start.sh
