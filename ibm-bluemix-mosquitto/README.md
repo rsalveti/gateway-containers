@@ -21,7 +21,7 @@ GW_DEVICE_TYPE=hikey
 Then run the containiner giving your local environment file with *--env-file*:
 
 ```
-docker run --restart=always -d -t --net=host --env-file=~/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto ibm-bluemix-mosquitto
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto ibm-bluemix-mosquitto
 ```
 
 ## Run the pre-built container
@@ -29,11 +29,11 @@ docker run --restart=always -d -t --net=host --env-file=~/ibm-bluemix-mosquitto.
 ARM64:
 
 ```
-docker run --restart=always -d -t --net=host --env-file=~/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto-arm64
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --net=host --env-file=~/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto-armhf
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto-armhf
 ```
