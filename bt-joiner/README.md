@@ -17,17 +17,17 @@ docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=7
 AMD64:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner
 ```
 
 ARM64:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner-arm64
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner-armhf
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-armhf
 ```

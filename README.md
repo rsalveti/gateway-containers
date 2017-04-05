@@ -7,7 +7,7 @@ On a fresh image (capable of running docker), run the following commands to boot
 ### Bluetooth LE 6LoWPAN Joiner
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner rsalveti/bt-joiner-arm64
+docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
 ```
 
 ### Tinyproxy (IPv6 -> IPv4)
@@ -15,7 +15,7 @@ docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=7
 Use *--add-host* to specify the local address of the hawkBit container:
 
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:192.168.1.10 --name tinyproxy rsalveti/tinyproxy-arm64
+docker run --restart=always -d -t --net=host --add-host=gitci.com:192.168.1.10 --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
 ```
 
 ### IBM Bluemix Mosquitto
@@ -33,5 +33,5 @@ GW_DEVICE_TYPE=hikey
 Start the container:
 
 ```
-docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto rsalveti/ibm-bluemix-mosquitto-arm64
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest-arm64
 ```

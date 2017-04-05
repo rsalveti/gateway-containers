@@ -17,17 +17,17 @@ docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip ad
 AMD64:
 
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy rsalveti/tinyproxy
+docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy
 ```
 
 ARM64:
 
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy rsalveti/tinyproxy-arm64
+docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy rsalveti/tinyproxy-armhf
+docker run --restart=always -d -t --net=host --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-armhf
 ```
