@@ -3,7 +3,7 @@ FROM rsalveti/minideb:stretch-arm64
 # Share step with the bt-joiner container
 RUN install_packages bluez wget
 
-RUN install_packages mosquitto jq curl
+RUN install_packages ca-certificates mosquitto jq curl
 
 # Fix initial start failure so we can run the setup script
 RUN touch /var/log/mosquitto/mosquitto.log
