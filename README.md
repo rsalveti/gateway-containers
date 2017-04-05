@@ -12,8 +12,10 @@ docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=7
 
 ### Tinyproxy (IPv6 -> IPv4)
 
+Use *--add-host* to specify the local address of the hawkBit container:
+
 ```
-docker run --restart=always -d -t --net=host --add-host=gitci.com:2804:192.168.1.10 --name tinyproxy rsalveti/tinyproxy-arm64
+docker run --restart=always -d -t --net=host --add-host=gitci.com:192.168.1.10 --name tinyproxy rsalveti/tinyproxy-arm64
 ```
 
 ### IBM Bluemix Mosquitto
