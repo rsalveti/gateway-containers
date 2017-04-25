@@ -4,7 +4,6 @@ RUN install_packages bluez wget
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/
-VOLUME /etc/bluetooth/6lowpand
 RUN wget --no-check-certificate https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/bluetooth_6lowpand.sh -O /usr/bin/bluetooth_6lowpand
 RUN chmod +x /usr/bin/bluetooth_6lowpand
 
