@@ -12,4 +12,4 @@ RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
 # Default to dump joiner log
-CMD tail -f /var/log/bluetooth_6lowpand.log
+CMD touch /var/log/bluetooth_6lowpand.log && tail -f /var/log/bluetooth_6lowpand.log
