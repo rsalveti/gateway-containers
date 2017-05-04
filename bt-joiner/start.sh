@@ -1,5 +1,12 @@
 #!/bin/sh
 
+mkdir -p /run/openrc
+touch /run/openrc/softlevel
+rc-status
+
+hciconfig hci0 up
+hciconfig hci0 reset
+
 service dbus start
 service bluetooth start
 
