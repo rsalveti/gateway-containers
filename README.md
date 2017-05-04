@@ -7,7 +7,7 @@ On a fresh image (capable of running docker), run the following commands to boot
 ### Bluetooth LE 6LoWPAN Joiner
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
 ```
 
 ### Tinyproxy (IPv6 -> IPv4)

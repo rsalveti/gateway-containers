@@ -1,6 +1,6 @@
-FROM linarotechnologies/minideb:stretch-arm64
+FROM linarotechnologies/alpine:v3.5-arm64
 
-RUN install_packages bluez wget
+RUN apk add --no-cache bash bluez wget
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/
