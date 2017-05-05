@@ -1,6 +1,6 @@
 #!/bin/sh
 
-service mosquitto start
+/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf -d
 
 # Execute all the rest
 exec "$@"

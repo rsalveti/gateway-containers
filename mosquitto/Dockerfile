@@ -1,11 +1,11 @@
-FROM bitnami/minideb:unstable
+FROM alpine:edge
 
-RUN install_packages ca-certificates mosquitto
+RUN apk add --no-cache ca-certificates mosquitto
 
 # Fix initial start failure so we can run the setup script
-RUN touch /var/log/mosquitto/mosquitto.log
-RUN chown mosquitto:mosquitto /var/log/mosquitto/mosquitto.log
-RUN chmod 644 /var/log/mosquitto/mosquitto.log
+RUN touch /var/log/mosquitto.log
+RUN chown mosquitto:mosquitto /var/log/mosquitto.log
+RUN chmod 644 /var/log/mosquitto.log
 
 EXPOSE 1883 8883
 
@@ -14,4 +14,4 @@ RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
 # Default to dump service log
-CMD tail -f /var/log/mosquitto/mosquitto.log
+CMD tail -f /var/log/mosquitto.log
