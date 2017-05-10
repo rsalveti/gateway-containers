@@ -1,7 +1,11 @@
 #!/bin/sh
 
-service dbus start
-service bluetooth start
+# Manually start dbus
+mkdir -p /var/run/dbus
+/usr/bin/dbus-daemon --system
+
+# Manually start bluez
+/usr/lib/bluetooth/bluetoothd &
 
 mount -t debugfs none /sys/kernel/debug
 

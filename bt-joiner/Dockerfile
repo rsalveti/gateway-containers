@@ -1,6 +1,6 @@
-FROM bitnami/minideb:unstable
+FROM alpine:v3.5
 
-RUN install_packages bluez wget
+RUN apk add --no-cache bash bluez wget
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/

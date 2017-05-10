@@ -9,7 +9,7 @@ docker build -t bt-joiner --force-rm -f Dockerfile<.arm64/.armhf> .
 ## Run the container
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner bt-joiner
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner bt-joiner
 ```
 
 To overwrite the default bt-joiner config values, create a local config file containing the desired options:
@@ -25,7 +25,7 @@ MAX_DEVICES=15
 Then start the container by overwriting bluetooth_6lowpand.conf:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock -v /home/linaro/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf --name bt-joiner bt-joiner
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log -v /home/linaro/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf --name bt-joiner bt-joiner
 ```
 
 ## Run the pre-built container
@@ -33,17 +33,17 @@ docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=7
 AMD64:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner
 ```
 
 ARM64:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --tmpfs=/run:rw,mode=755 --tmpfs=/run/lock --name bt-joiner linarotechnologies/bt-joiner:latest-armhf
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-armhf
 ```
