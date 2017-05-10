@@ -1,11 +1,6 @@
-FROM bitnami/minideb:unstable
+FROM alpine:edge
 
-RUN install_packages ca-certificates mosquitto
-
-# Fix initial start failure so we can run the setup script
-RUN touch /var/log/mosquitto/mosquitto.log
-RUN chown mosquitto:mosquitto /var/log/mosquitto/mosquitto.log
-RUN chmod 644 /var/log/mosquitto/mosquitto.log
+RUN apk add --no-cache ca-certificates mosquitto
 
 EXPOSE 1883 8883
 

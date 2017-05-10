@@ -55,6 +55,7 @@ start_type automatic
 bridge_attempt_unsubscribe false
 notifications false
 connection_messages true
+log_dest file /var/log/mosquitto/mosquitto.log
 
 # Device management subscriptions
 topic iotdm-1/type/+/id/# in 1 "" ""
@@ -73,5 +74,5 @@ topic iotdevice-1/type/+/id/# out 1 "" ""
 Start the container:
 
 ```
-docker run --restart=always -d -t --net=host -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
 ```
