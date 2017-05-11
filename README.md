@@ -22,7 +22,7 @@ docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/v
 
 Brokering MQTT data from an IoT device to an apporpriate data system can be done using a pre-built mosquitto broker.  Though you can run any number of brokers, you would want to change the expost port before trying to run multiple brokers.  It's typical that you would run one of these containers on your gateway.
 
-#### IBM Bluemix Mosquitto
+#### Option 1: IBM Bluemix Mosquitto
 
 Create the authentication keys file:
 
@@ -40,12 +40,16 @@ Start the container:
 docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest-arm64
 ```
 
-#### Generic Mosquitto broker
+#### Option 2: Generic Mosquitto broker
 
 Create a local mosquitto configuration file:
 
 ```
-$ cat ~/mqtt-broker.conf
+$ cat ~/mosquitto.conf
+# General settings
+log_dest file /var/log/mosquitto/mosquitto.log
+
+# Bridge configuration
 connection #connection-name
 address #url:#port
 remote_username #username 
