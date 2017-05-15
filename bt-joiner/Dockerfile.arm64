@@ -7,6 +7,9 @@ RUN mkdir -p /etc/bluetooth/6lowpand/
 RUN wget --no-check-certificate https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/bluetooth_6lowpand.sh -O /usr/bin/bluetooth_6lowpand
 RUN chmod +x /usr/bin/bluetooth_6lowpand
 
+# Default BlueZ main.conf
+COPY main.conf /etc/bluetooth/main.conf
+
 COPY start.sh start.sh
 RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
