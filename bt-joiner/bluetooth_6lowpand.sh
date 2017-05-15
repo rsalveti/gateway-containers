@@ -18,7 +18,7 @@
 
 set -e
 
-SCRIPT_VERSION="1.01"
+SCRIPT_VERSION="1.02"
 
 # logging
 LOG_LEVEL_ERROR=1
@@ -435,19 +435,9 @@ function find_ipsp_device {
 		return
 	fi
 
-	local __command_buf=$(
-		nohup hcitool lescan 2>&1 &
-		__pid=$!
-		sleep ${__timeout}
-		# check if PID is running
-		if [ -f "/proc/${__pid}/cmdline" ]; then
-			kill -SIGINT ${__pid}
-		fi
-	)
-
 	# Lines will start with MAC and then description broken by returns:
 	# Return the first MAC which is followed by BT_NODE_FILTER match
-	local __lines=$(echo ${__command_buf} | tr "\r" "\n")
+	local __lines=$(pylescan -i ${option_hci_interface} -c -t ${__timeout} -s)
 	for __line in ${__lines}; do
 		if [[ "${__line}" =~ ${MACADDR_REGEX_LINE} ]]; then
 			__found_devices=${__line}
@@ -496,10 +486,6 @@ if [ "${option_daemonize}" -eq "1" ]; then
 		sleep 1
 		echo 1 > /sys/kernel/debug/bluetooth/6lowpan_enable
 	fi
-
-	# reset hci interface
-	hciconfig ${option_hci_interface} up
-	hciconfig ${option_hci_interface} reset
 
 	while :; do
 		find_ipsp_device ${option_timeout}

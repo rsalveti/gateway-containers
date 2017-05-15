@@ -1,11 +1,12 @@
 FROM linarotechnologies/alpine:v3.5-arm64
 
-RUN apk add --no-cache bash bluez
+RUN apk add --no-cache bash bluez py-dbus py-gobject3
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/
 COPY bluetooth_6lowpand.sh /usr/bin/bluetooth_6lowpand
-RUN chmod +x /usr/bin/bluetooth_6lowpand
+COPY pylescan /usr/bin/pylescan
+RUN chmod +x /usr/bin/bluetooth_6lowpand /usr/bin/pylescan
 
 # Default BlueZ main.conf
 COPY main.conf /etc/bluetooth/main.conf
