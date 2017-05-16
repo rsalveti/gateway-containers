@@ -1,4 +1,4 @@
-FROM alpine:v3.5
+FROM alpine:edge
 
 RUN apk add --no-cache bluez py-dbus py-gobject3
 

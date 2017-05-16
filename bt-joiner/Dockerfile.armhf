@@ -1,4 +1,4 @@
-FROM linarotechnologies/alpine:v3.5-armhf
+FROM linarotechnologies/alpine:edge-armhf
 
 RUN apk add --no-cache bluez py-dbus py-gobject3
 

@@ -1,4 +1,4 @@
-FROM linarotechnologies/alpine:v3.5-arm64
+FROM linarotechnologies/alpine:edge-arm64
 
 RUN apk add --no-cache bluez py-dbus py-gobject3
 
