@@ -1,6 +1,6 @@
 FROM alpine:v3.5
 
-RUN apk add --no-cache bash bluez py-dbus py-gobject3
+RUN apk add --no-cache bluez py-dbus py-gobject3
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/

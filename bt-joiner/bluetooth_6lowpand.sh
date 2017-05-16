@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/sh
 #
 # Copyright (c) 2017 Linaro Limited
 #
@@ -18,7 +17,7 @@
 
 set -e
 
-SCRIPT_VERSION="1.02"
+SCRIPT_VERSION="1.03"
 
 # logging
 LOG_LEVEL_ERROR=1
@@ -262,9 +261,9 @@ option_hci_interface="$(conf_find_value "HCI_INTERFACE" "${DEFAULT_HCI_INTERFACE
 option_ignore_filter="$(conf_find_value "IGNORE_FILTER" "0")"
 option_use_whitelist="$(conf_find_value "USE_WL" "0")"
 option_daemonize=0
-option_timeout="$(conf_find_value "SCAN_WIN" "${DEFAULT_SCANNING_WINDOW}")s"
-option_interval="$(conf_find_value "SCAN_INT" "${DEFAULT_SCANNING_INTERVAL}")s"
-option_join_delay="$(conf_find_value "JOIN_DELAY" "${DEFAULT_DEVICE_JOIN_DELAY}")s"
+option_timeout="$(conf_find_value "SCAN_WIN" "${DEFAULT_SCANNING_WINDOW}")"
+option_interval="$(conf_find_value "SCAN_INT" "${DEFAULT_SCANNING_INTERVAL}")"
+option_join_delay="$(conf_find_value "JOIN_DELAY" "${DEFAULT_DEVICE_JOIN_DELAY}")"
 option_max_devices="$(conf_find_value "MAX_DEVICES" "${DEFAULT_MAX_DEVICES}")"
 option_skip_init="$(conf_find_value "SKIP_INIT" "0")"
 
@@ -280,7 +279,7 @@ while [ "${#}" -gt 0 ]; do
 	# to debug option parsing
 	"-ll" | "--loglevel")
 		shift
-		if ! [[ "${1}" =~ ${LOGLEVEL_REGEX} ]]; then
+		if ! echo "${1}" | grep -q -E "${LOGLEVEL_REGEX}"; then
 			write_log ${LOG_LEVEL_ERROR} "Log level must be between ${LOG_LEVEL_ERROR} and ${LOG_LEVEL_VERBOSE_DEBUG}"
 			exit 1
 		fi
@@ -333,8 +332,8 @@ while [ "${#}" -gt 0 ]; do
 		;;
 	"-wladd" | "--whitelist_add")
 		shift
-		__device="${1^^}"
-		if [[ "${__device}" =~ ${MACADDR_REGEX_LINE} ]]; then
+		__device="$(echo ${1} | tr '[:lower:]' '[:upper:]')"
+		if echo "${__device}" | grep -q -E "${MACADDR_REGEX_LINE}"; then
 			result=$(conf_add_entry "WL=${__device}")
 			if [ "${result}" -ne "0" ]; then
 				exit "${result}"
@@ -347,8 +346,8 @@ while [ "${#}" -gt 0 ]; do
 		;;
 	"-wlrm" | "--whitelist_remove")
 		shift
-		__device="${1^^}"
-		if [[ "${__device}" =~ ${MACADDR_REGEX_LINE} ]]; then
+		__device="$(echo ${1} | tr '[:lower:]' '[:upper:]')"
+		if echo "${__device}" | grep -q -E "${MACADDR_REGEX_LINE}"; then
 			result=$(conf_remove_entry "WL=${__device}")
 			if [ "${result}" -ne "0" ]; then
 				exit "${result}"
@@ -439,7 +438,7 @@ function find_ipsp_device {
 	# Return the first MAC which is followed by BT_NODE_FILTER match
 	local __lines=$(pylescan -i ${option_hci_interface} -c -t ${__timeout} -s)
 	for __line in ${__lines}; do
-		if [[ "${__line}" =~ ${MACADDR_REGEX_LINE} ]]; then
+		if echo "${__line}" | grep -q -E "${MACADDR_REGEX_LINE}"; then
 			__found_devices=${__line}
 		else
 			if [ ! -z "${__found_devices}" ]; then
