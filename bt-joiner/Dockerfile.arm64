@@ -15,5 +15,5 @@ COPY start.sh start.sh
 RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
-# Default to dump joiner log
-CMD touch /var/log/bluetooth_6lowpand.log && tail -f /var/log/bluetooth_6lowpand.log
+# Default to start bluetooth_6lowpand and dump output at stdout
+CMD /usr/bin/bluetooth_6lowpand --daemonize --skip_init
