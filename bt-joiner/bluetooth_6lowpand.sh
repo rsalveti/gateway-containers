@@ -17,7 +17,7 @@
 
 set -e
 
-SCRIPT_VERSION="1.03"
+SCRIPT_VERSION="1.04"
 
 # logging
 LOG_LEVEL_ERROR=1
@@ -42,6 +42,7 @@ DEFAULT_SCANNING_WINDOW=5
 DEFAULT_SCANNING_INTERVAL=10
 DEFAULT_DEVICE_JOIN_DELAY=1
 DEFAULT_MAX_DEVICES=8
+DEFAULT_LOG_LEVEL=$LOG_LEVEL_DEBUG
 
 # TODO: Enforce maximums
 MAX_SCANNING_WINDOW=30
@@ -91,7 +92,7 @@ function conf_check_pattern {
 }
 
 # Set option_loglevel early so that logging can be done
-option_loglevel="$(conf_find_value "LOG_LEVEL" "${LOG_LEVEL_INFO}")"
+option_loglevel="$(conf_find_value "LOG_LEVEL" "${DEFAULT_LOG_LEVEL}")"
 
 # write_log()
 # description:
