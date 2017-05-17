@@ -153,7 +153,7 @@ COMMAND LINE OPTIONS FOR CONFIG FILE MANAGEMENT:
 -wlls  | --whitelist_list	: list the WL= entries in conf
 
 CONFIGURATION FILE ENTRIES:
-SKIP_INIT	: skip bt initialization (Ex: SKIP_INIT=1)
+SKIP_INIT	: skip bt 6lowpan initialization (Ex: SKIP_INIT=1)
 LOG_LEVEL	: logging level (Ex: LOG_LEVEL=4)
 HCI_INTERFACE	: alternate hci interface (Ex: HCI_INTERFACE=hci0)
 SCAN_WIN	: scanning search window in seconds (Ex: SCAN_WIN=5)
@@ -483,8 +483,10 @@ if [ "${option_daemonize}" -eq "1" ]; then
 		# INIT bluetooth modules
 		modprobe bluetooth_6lowpan
 		sleep 1
-		echo 1 > /sys/kernel/debug/bluetooth/6lowpan_enable
 	fi
+
+	# Make sure 6lowpan_enable is always 1
+	echo 1 > /sys/kernel/debug/bluetooth/6lowpan_enable
 
 	while :; do
 		find_ipsp_device ${option_timeout}
