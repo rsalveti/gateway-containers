@@ -17,7 +17,7 @@
 
 set -e
 
-SCRIPT_VERSION="1.04"
+SCRIPT_VERSION="1.05"
 
 # logging
 LOG_LEVEL_ERROR=1
@@ -437,7 +437,7 @@ function find_ipsp_device {
 
 	# Lines will start with MAC and then description broken by returns:
 	# Return the first MAC which is followed by BT_NODE_FILTER match
-	local __lines=$(pylescan -i ${option_hci_interface} -c -t ${__timeout} -s)
+	__lines=$(pylescan -i ${option_hci_interface} -c -t ${__timeout} -s)
 	for __line in ${__lines}; do
 		if echo "${__line}" | grep -q -E "${MACADDR_REGEX_LINE}"; then
 			__found_devices=${__line}
