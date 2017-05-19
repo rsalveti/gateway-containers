@@ -6,7 +6,8 @@ mkdir -p /var/log/tinyproxy
 touch /var/log/tinyproxy/tinyproxy.log
 chown -R tinyproxy:tinyproxy /var/log/tinyproxy /var/run/tinyproxy
 
-/usr/sbin/tinyproxy -c /etc/tinyproxy/tinyproxy.conf
+# Force dump of tinyproxy.log to stdout
+tail -f /var/log/tinyproxy/tinyproxy.log &
 
 # Execute all the rest
 exec "$@"

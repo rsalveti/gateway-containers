@@ -9,7 +9,7 @@ docker build -t tinyproxy --force-rm -f Dockerfile<.arm64/.armhf> .
 ## Run the container
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy tinyproxy
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy tinyproxy
 ```
 
 ## Run the pre-built container
@@ -17,17 +17,17 @@ docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/v
 AMD64:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy
 ```
 
 ARM64:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-armhf
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-armhf
 ```

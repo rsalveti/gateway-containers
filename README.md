@@ -15,7 +15,7 @@ docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/v
 Use *--add-host* to specify the local address of the hawkBit container:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:192.168.1.10 --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:192.168.1.10 --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
 ```
 
 ### Mosquitto MQTT Broker
