@@ -47,12 +47,12 @@ Create a local mosquitto configuration file:
 ```
 $ cat ~/mosquitto.conf
 # General settings
-log_dest file /var/log/mosquitto/mosquitto.log
+log_dest stdout
 
 # Bridge configuration
 connection #connection-name
 address #url:#port
-remote_username #username 
+remote_username #username
 remote_password #password
 try_private false
 start_type automatic
@@ -77,5 +77,5 @@ topic iotdevice-1/type/+/id/# out 1 "" ""
 Start the container:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
+docker run --restart=always -d -t --net=host --read-only -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
 ```
