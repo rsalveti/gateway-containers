@@ -1,11 +1,12 @@
-FROM linarotechnologies/alpine:v3.5-armhf
+FROM linarotechnologies/alpine:edge-armhf
 
-RUN apk add --no-cache bash bluez wget
+RUN apk add --no-cache bluez py-dbus py-gobject3
 
 # BT 6lowpan joiner
 RUN mkdir -p /etc/bluetooth/6lowpand/
-RUN wget --no-check-certificate https://raw.githubusercontent.com/linaro-technologies/iot-gateway-files/master/bluetooth_6lowpand.sh -O /usr/bin/bluetooth_6lowpand
-RUN chmod +x /usr/bin/bluetooth_6lowpand
+COPY bluetooth_6lowpand.sh /usr/bin/bluetooth_6lowpand
+COPY pylescan /usr/bin/pylescan
+RUN chmod +x /usr/bin/bluetooth_6lowpand /usr/bin/pylescan
 
 # Default BlueZ main.conf
 COPY main.conf /etc/bluetooth/main.conf
@@ -14,5 +15,5 @@ COPY start.sh start.sh
 RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
-# Default to dump joiner log
-CMD touch /var/log/bluetooth_6lowpand.log && tail -f /var/log/bluetooth_6lowpand.log
+# Default to start bluetooth_6lowpand and dump output at stdout
+CMD /usr/bin/bluetooth_6lowpand --daemonize --skip_init
