@@ -8,5 +8,4 @@ COPY start.sh start.sh
 RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
-# Default to dump service log
-CMD tail -f /var/log/mosquitto/mosquitto.log
+CMD /usr/sbin/mosquitto -c /etc/mosquitto/conf.d/mosquitto.conf

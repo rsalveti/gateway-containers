@@ -13,14 +13,14 @@ Create a local mosquitto config file with generic credentials and relevant chann
 ```
 connection #connection-name
 address #url:#port
-remote_username #username 
+remote_username #username
 remote_password #password
 try_private false
 start_type automatic
 bridge_attempt_unsubscribe false
 notifications false
 connection_messages true
-log_dest file /var/log/mosquitto/mosquitto.log
+log_dest stdout
 
 # Device management subscriptions
 topic iotdm-1/type/+/id/# in 1 "" ""
@@ -39,7 +39,7 @@ topic iotdevice-1/type/+/id/# out 1 "" ""
 Then run the containiner volume mounting your mosquitto config file:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto mosquitto
+docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto mosquitto
 ```
 
 ## Run the pre-built container
@@ -47,17 +47,17 @@ docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /pa
 AMD64:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto
+docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto
 ```
 
 ARM64:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
+docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
 ```
 
 ARMHF:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/log -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-armhf
+docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-armhf
 ```
