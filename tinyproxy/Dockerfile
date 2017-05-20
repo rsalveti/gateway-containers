@@ -1,6 +1,6 @@
-FROM bitnami/minideb:unstable
+FROM alpine:edge
 
-RUN install_packages tinyproxy
+RUN apk add --no-cache tinyproxy
 
 # Tinyproxy config file (use Debian location currently)
 COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
@@ -12,4 +12,4 @@ RUN chmod +x start.sh
 ENTRYPOINT ["/start.sh"]
 
 # Default to dump service log
-CMD tail -f /var/log/tinyproxy/tinyproxy.log
+CMD /usr/sbin/tinyproxy -d -c /etc/tinyproxy/tinyproxy.conf
