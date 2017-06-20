@@ -6,8 +6,26 @@ On a fresh image (capable of running docker), run the following commands to boot
 
 ### Bluetooth LE 6LoWPAN Joiner
 
+Create the bluetooth 6lowpand configuration file:
+
 ```
-docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
+HCI_INTERFACE=hci0
+SCAN_WIN=3
+SCAN_INT=6
+MAX_DEVICES=8
+
+# Change to USE_WL=1 to use whitelisted MAC addresses
+USE_WL=0
+
+# If you set USE_WL=1, then add a WL entry for each of your devices'
+# MAC addresses, like so:
+# WL=DE:AD:BE:EF:DE:AD
+```
+
+Start the container:
+
+```
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log -v /home/linaro/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
 ```
 
 ### Tinyproxy (IPv6 -> IPv4)
