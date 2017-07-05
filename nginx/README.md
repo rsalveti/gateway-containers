@@ -1,0 +1,82 @@
+# NGINX
+
+## Build the container
+
+```
+docker build -t nginx --force-rm -f Dockerfile<.arm64/.armhf> .
+```
+
+## Run the container
+
+```
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --name nginx nginx
+```
+
+### LWM2M Proxy
+
+Create a local nginx config file containing the desired options:
+
+```
+$ cat nginx-lwm2m.conf
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log debug;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+stream {
+    log_format  basic  '$remote_addr [$time_local] '
+                       '$protocol $status $bytes_sent $bytes_received '
+                       '$session_time';
+
+    access_log  /var/log/nginx/access.log basic buffer=32k;
+
+    server {
+        listen  [::]:5683 udp;
+        proxy_pass  gitci.com:5683;
+    }
+
+    server {
+        listen  [::]:5684 udp;
+        proxy_pass  gitci.com:5684;
+    }
+}
+```
+
+Then start the container by overwriting nginx.conf:
+
+```
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx nginx
+```
+
+### Debug mode
+
+To enable debug mode in NGINX, a different binary needs to be used (nginx-debug). Just overwrite the default docker CMD and start with nginx-debug instead:
+
+```
+docker run --restart=always -d -t --net=host -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx nginx nginx-debug -g 'daemon off;'
+```
+
+## Run the pre-built container
+
+AMD64:
+
+```
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/bt-joiner
+```
+
+ARM64:
+
+```
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/nginx:latest-arm64
+```
+
+ARMHF:
+
+```
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/nginx:latest-armhf
+```
