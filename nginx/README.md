@@ -3,7 +3,7 @@
 ## Build the container
 
 ```
-docker build -t nginx --force-rm -f Dockerfile<.arm64/.armhf> .
+docker build -t nginx --force-rm -f Dockerfile .
 ```
 
 ## Run the container
