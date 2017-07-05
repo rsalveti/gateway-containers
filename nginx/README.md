@@ -63,20 +63,6 @@ docker run --restart=always -d -t --net=host -v /path/to/nginx-lwm2m.conf:/etc/n
 
 ## Run the pre-built container
 
-AMD64:
-
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/bt-joiner
-```
-
-ARM64:
-
-```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/nginx:latest-arm64
-```
-
-ARMHF:
-
-```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/nginx:latest-armhf
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --add-host=gitci.com:<lwm2m server ip address> -v /path/to/nginx-lwm2m.conf:/etc/nginx/nginx.conf --name nginx linarotechnologies/nginx:latest
 ```

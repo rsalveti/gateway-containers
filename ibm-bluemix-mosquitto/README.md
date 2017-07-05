@@ -26,20 +26,6 @@ docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix
 
 ## Run the pre-built container
 
-AMD64:
-
 ```
-docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto
-```
-
-ARM64:
-
-```
-docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest-arm64
-```
-
-ARMHF:
-
-```
-docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest-armhf
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest
 ```

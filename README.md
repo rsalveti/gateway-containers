@@ -25,7 +25,7 @@ USE_WL=0
 Start the container:
 
 ```
-docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log -v /home/linaro/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log -v /home/linaro/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf --name bt-joiner linarotechnologies/bt-joiner:latest
 ```
 
 ### Tinyproxy (IPv6 -> IPv4)
@@ -33,7 +33,7 @@ docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/v
 Use *--add-host* to specify the local address of the hawkBit container:
 
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:192.168.1.10 --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:192.168.1.10 --name tinyproxy linarotechnologies/tinyproxy:latest
 ```
 
 ### Mosquitto MQTT Broker
@@ -55,7 +55,7 @@ GW_DEVICE_TYPE=hikey
 Start the container:
 
 ```
-docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest-arm64
+docker run --restart=always -d -t --net=host --env-file=/home/linaro/ibm-bluemix-mosquitto.env --name ibm-bluemix-mosquitto linarotechnologies/ibm-bluemix-mosquitto:latest
 ```
 
 #### Option 2: Generic Mosquitto broker
@@ -95,5 +95,5 @@ topic iotdevice-1/type/+/id/# out 1 "" ""
 Start the container:
 
 ```
-docker run --restart=always -d -t --net=host --read-only -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
+docker run --restart=always -d -t --net=host --read-only -v /home/linaro/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest
 ```
