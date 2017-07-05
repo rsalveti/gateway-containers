@@ -30,20 +30,6 @@ docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/v
 
 ## Run the pre-built container
 
-AMD64:
-
 ```
-docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner
-```
-
-ARM64:
-
-```
-docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-arm64
-```
-
-ARMHF:
-
-```
-docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest-armhf
+docker run --restart=always -d -t --privileged --net=host --read-only --tmpfs=/var/run --tmpfs=/var/lock --tmpfs=/var/log --name bt-joiner linarotechnologies/bt-joiner:latest
 ```

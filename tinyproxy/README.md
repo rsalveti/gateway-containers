@@ -14,20 +14,6 @@ docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpf
 
 ## Run the pre-built container
 
-AMD64:
-
 ```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy
-```
-
-ARM64:
-
-```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-arm64
-```
-
-ARMHF:
-
-```
-docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest-armhf
+docker run --restart=always -d -t --net=host --read-only --tmpfs=/var/run --tmpfs=/var/log --tmpfs=/tmp --add-host=gitci.com:<hawkbit ip address> --name tinyproxy linarotechnologies/tinyproxy:latest
 ```

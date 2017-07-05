@@ -44,20 +44,6 @@ docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.c
 
 ## Run the pre-built container
 
-AMD64:
-
 ```
-docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto
-```
-
-ARM64:
-
-```
-docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-arm64
-```
-
-ARMHF:
-
-```
-docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest-armhf
+docker run --restart=always -d -t --net=host --read-only -v /path/to/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf --name mosquitto linarotechnologies/mosquitto:latest
 ```
