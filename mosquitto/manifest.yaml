@@ -11,7 +11,7 @@ manifests:
       architecture: arm
       os: linux
   -
-    image: linarotechnologies/mosquitto:latest
+    image: linarotechnologies/mosquitto:latest-amd64
     platform:
       architecture: amd64
       features:

@@ -11,7 +11,7 @@ manifests:
       architecture: arm
       os: linux
   -
-    image: linarotechnologies/nginx:latest
+    image: linarotechnologies/nginx:latest-amd64
     platform:
       architecture: amd64
       features:
