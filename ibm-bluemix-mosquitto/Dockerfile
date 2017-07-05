@@ -1,4 +1,4 @@
-FROM bitnami/minideb:unstable
+FROM linarotechnologies/minideb:stretch
 
 # Share step with the bt-joiner container
 RUN install_packages bluez wget

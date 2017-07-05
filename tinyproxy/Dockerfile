@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM linarotechnologies/alpine:edge
 
 RUN apk add --no-cache tinyproxy
 
