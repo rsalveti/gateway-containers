@@ -1,0 +1,13 @@
+FROM linarotechnologies/alpine:edge
+
+RUN apk add --no-cache openjdk8-jre-base ca-certificates
+
+RUN mkdir -p /opt/cf-proxy
+COPY Californium.properties /opt/cf-proxy
+COPY ProxyMapping.properties /opt/cf-proxy
+COPY Proxy.properties /opt/cf-proxy
+COPY cf-proxy-1.1.0-SNAPSHOT.jar /opt/cf-proxy
+
+EXPOSE 5682
+
+CMD cd /opt/cf-proxy && java -jar cf-proxy-1.1.0-SNAPSHOT.jar
