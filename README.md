@@ -1,6 +1,6 @@
 # LTD IoT Gateway Containers
 
-## Quick start
+## Quick Start
 
 On a fresh image (capable of running docker), run the following commands to bootstrap your LTD IoT Gateway environment:
 
